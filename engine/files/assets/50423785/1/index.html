@@ -1,0 +1,25 @@
+<div id="app">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <nav class="navbar is-fixed-bottom level m-5" role="navigation">
+        <div class="level-left">
+        </div>
+        <div class="level-righ">
+            <div class="level-item">
+                <button class="btn modal-button" data-target="modal-help" id="help-btn" @click="showHelp" data-tooltip="使い方"><i class="fa fa-question"></i></button>
+                <button class="btn" id="screenshot-btn" @click="takeScreenshot" data-tooltip="スクリーンショット"><i class="fa fa-camera"></i></button>
+                <button v-if="fullscreen" class="btn" id="exit-fullscreen-btn" @click="exitFullscreen" data-tooltip="全画面解除"><i class="fa fa-compress"></i></button>
+                <button v-else class="btn" id="request-fullscreen-btn" @click="requestFullscreen" data-tooltip="全画面表示"><i class="fa fa-expand"></i></button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="modal" id="modal-help">
+        <div class="modal-background" @click="closeHelp"></div>
+        <div class="modal-content">
+            <p class="image">
+                <img src="https://placehold.jp/480x190.png" alt="">
+            </p>
+        </div>
+        <button class="modal-close is-large" @click="closeHelp" aria-label="close"></button>
+    </div>
+</div>

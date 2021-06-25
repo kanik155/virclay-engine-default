@@ -1,0 +1,35 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css";
+
+body {
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.btn {
+    margin: 4px;
+    background-color: white;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    opacity:0.8;
+    
+    width: 44px;
+    height: 44px;
+    transform: rotate(-19deg);
+    border-radius:
+        43% 57% 43% 57% /
+        57% 43% 57% 43%;
+}
+
+.btn > .fa {
+    transform: rotate(19deg);
+    color: slategray;
+}
+
+.btn:hover .fa {
+    color: dodgerblue;
+}
