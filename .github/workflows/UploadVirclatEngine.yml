@@ -17,13 +17,14 @@ jobs:
 
       - name: Deploy
         env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          S3_BUCKET_NAME: s3://virclay-engines/engine-default
         run: |
+          sed -i -e 's/CONFIG_FILENAME = "config.json";/CONFIG_CORE_FILENAME = "config_core.json";CONFIG_FILENAME = "config.json";/g' engine/__settings__.js
           mv engine/config.json engine/config_core.json
           cp --recursive --force resources/thumbs engine/thumbs
           cp --force resources/playcanvas-stable.min.js engine
           cp --force resources/__start__.js engine
-          aws s3 rm --recursive --region ap-northeast-1 $S3_BUCKET_NAME
-          aws s3 cp --recursive --region ap-northeast-1 engine $S3_BUCKET_NAME --acl public-read
+          aws s3 rm --recursive --region ap-northeast-1 $AWS_S3_BUCKET
+          aws s3 cp --recursive --region ap-northeast-1 engine $AWS_S3_BUCKET --acl public-read
