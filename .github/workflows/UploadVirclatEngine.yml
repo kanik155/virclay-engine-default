@@ -25,4 +25,4 @@ jobs:
           cp  --force resources/playcanvas-stable.min.js engine
           cp  --force resources/__start__.js engine
           aws s3 rm --recursive --region ap-northeast-1 $S3_BUCKET_NAME
-          aws s3 cp --recursive --region ap-northeast-1 engine $S3_BUCKET_NAME
+          aws s3 cp --recursive --region ap-northeast-1 engine $S3_BUCKET_NAME --acl public-read --follow-symlinks --delete
