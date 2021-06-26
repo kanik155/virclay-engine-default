@@ -26,5 +26,6 @@ jobs:
           cp --recursive --force resources/thumbs engine/thumbs
           cp --force resources/playcanvas-stable.min.js engine
           cp --force resources/__start__.js engine
+          cp --force resources/favicon.ico engine
           aws s3 rm --recursive --region ap-northeast-1 $AWS_S3_BUCKET
           aws s3 cp --recursive --region ap-northeast-1 engine $AWS_S3_BUCKET --acl public-read
